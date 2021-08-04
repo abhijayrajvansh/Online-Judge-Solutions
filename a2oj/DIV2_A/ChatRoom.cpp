@@ -1,6 +1,6 @@
 /**
 *    author: abhijayrajvansh
-*    created: 03.08.2021  16:43:23
+*    created: 05.08.2021  00:58:52
 **/
 #include <bits/stdc++.h>
 using namespace std;
@@ -24,6 +24,7 @@ using namespace chrono;
 #define RFO(i, z, n) for(int (i) = (z); (i) >= (n); (i)--)
 #define pii pair<int, int>
 #define sortall(x) sort(all(x))
+#define rsortall(x) sort(all(x), greater<int>())
 #define revi(n, arr) FO(i, 0, (n)){int t; cin >> t;(arr).pb(t);}
 
 typedef long long ll;
@@ -55,7 +56,19 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 #endif
 
 void run_cases(){
-    
+    string s;
+    cin >> s;
+    s = '_' + s; // _string
+    string c = "hello";
+    int found = 0;
+    FO(i, 0, 5){
+        found = s.find(c[i], found + 1);
+        if(found == -1){
+            cout << "NO";
+            return;
+        }
+    }
+    cout << "YES";
 }
 
 int main() {
@@ -76,5 +89,6 @@ int main() {
     }
     auto stop1 = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop1 - start1);
-    cerr << "Time: " << duration . count() / 1000 << " ms";
+    int TIME = duration . count() / 1000;
+    cerr << "Time: " << (float)TIME / 1000 << " sec";
 }
