@@ -1,3 +1,3 @@
-# Online_Judeg_Solutions
+# Online-Judeg-Solutions
 
 My online judge solutions from various CP platforms 
