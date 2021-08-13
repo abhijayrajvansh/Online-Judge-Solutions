@@ -1,6 +1,6 @@
 /**
 *    author:  abhijayrajvansh
-*    created: 13.08.2021  20:34:16
+*    created: 14.08.2021  03:04:04
 **/
 #include <bits/stdc++.h>
 using namespace std;
@@ -23,18 +23,16 @@ using namespace chrono;
 #define FO(i, z, n) for(int (i) = (z); (i) < (n); (i)++)
 #define RFO(i, z, n) for(int (i) = (z); (i) >= (n); (i)--)
 #define pii pair<int, int>
-#define sortall(x) sort(all(x))
-#define rsortall(x) sort(all(x), greater<int>())
 #define revi(n, arr) FO(i, 0, (n)){int t; cin >> t;(arr).pb(t);}
 
 typedef long long ll;
 typedef unsigned long long ull;
 typedef long double lld;
-typedef pair<ll, ll> pl;
+typedef pair<ll, ll> pll;
 typedef vector<int> vi;
 typedef vector<ll> vl;
 typedef vector<pii> vpii;
-typedef vector<pl> vpl;
+typedef vector<pll> vpl;
 typedef vector<vi> vvi;
 typedef vector<vl> vvl;
 
@@ -46,7 +44,9 @@ public:
 };
 template<class Fun> decltype(auto) y_combinator(Fun &&fun) { return y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun)); }
 template<typename A, typename B> ostream& operator<<(ostream &os, const pair<A, B> &p) { return os << '(' << p.first << ", " << p.second << ')'; }
-template<typename T_container, typename T = typename enable_if<!is_same<T_container, string>::value, typename T_container::value_type>::type> ostream& operator<<(ostream &os, const T_container &v) { os << '{'; string sep; for (const T &x : v) os << sep << x, sep = ", "; return os << '}'; }
+
+template<typename T_container, typename T = typename enable_if<!is_same<T_container, string>::value, typename T_container::value_type>::type> ostream&
+operator<<(ostream &os, const T_container &v) { os << '{'; string sep; for (const T &x : v) os << sep << x, sep = ", "; return os << '}'; }
 
 void dbg_out() { cerr << endl; }
 template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr << ' ' << H; dbg_out(T...); }
@@ -58,6 +58,25 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 #endif
 
 void run_cases(){
+    int n; cin >> n;
+    vector<pair<ll, ll>> arr(n);
+    for(ll i = 0; i < n; i++){
+        cin >> arr[i].first;
+        arr[i].second = i + 1;
+    }
+    sort(arr.begin(), arr.end());
+    ll c = 0;
+    FO(i, 0, n){
+        FO(j, i + 1, n){
+            ll val = arr[i].ff * arr[j].ff;
+            if(val == arr[i].ss + arr[j].ss){
+                deb(arr[i].ss, arr[j].ss)
+                c++;
+            }
+            if(val > 2 * n) break;
+        }
+    }
+    cout << c << nl;
     
 }
 
