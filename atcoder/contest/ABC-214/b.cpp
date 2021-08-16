@@ -1,6 +1,6 @@
 /**
-*    author: abhijayrajvansh
-*    created: 03.08.2021  23:14:49
+*    author:  abhijayrajvansh
+*    created: 14.08.2021  17:42:19
 **/
 #include <bits/stdc++.h>
 using namespace std;
@@ -23,17 +23,16 @@ using namespace chrono;
 #define FO(i, z, n) for(int (i) = (z); (i) < (n); (i)++)
 #define RFO(i, z, n) for(int (i) = (z); (i) >= (n); (i)--)
 #define pii pair<int, int>
-#define sortall(x) sort(all(x))
 #define revi(n, arr) FO(i, 0, (n)){int t; cin >> t;(arr).pb(t);}
 
 typedef long long ll;
 typedef unsigned long long ull;
 typedef long double lld;
-typedef pair<ll, ll> pl;
+typedef pair<ll, ll> pll;
 typedef vector<int> vi;
 typedef vector<ll> vl;
 typedef vector<pii> vpii;
-typedef vector<pl> vpl;
+typedef vector<pll> vpl;
 typedef vector<vi> vvi;
 typedef vector<vl> vvl;
 
@@ -45,48 +44,45 @@ public:
 };
 template<class Fun> decltype(auto) y_combinator(Fun &&fun) { return y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun)); }
 template<typename A, typename B> ostream& operator<<(ostream &os, const pair<A, B> &p) { return os << '(' << p.first << ", " << p.second << ')'; }
-template<typename T_container, typename T = typename enable_if<!is_same<T_container, string>::value, typename T_container::value_type>::type> ostream& operator<<(ostream &os, const T_container &v) { os << '{'; string sep; for (const T &x : v) os << sep << x, sep = ", "; return os << '}'; }
+
+template<typename T_container, typename T = typename enable_if<!is_same<T_container, string>::value, typename T_container::value_type>::type> ostream&
+operator<<(ostream &os, const T_container &v) { os << '{'; string sep; for (const T &x : v) os << sep << x, sep = ", "; return os << '}'; }
 
 void dbg_out() { cerr << endl; }
 template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr << ' ' << H; dbg_out(T...); }
 
-#ifndef ONLINE_JUDGE
+#ifdef ABHIJAY_DEBUG
 #define deb(...) cerr << "["<< #__VA_ARGS__ << "]:", dbg_out(__VA_ARGS__);
+#else
+#define deb(...)
 #endif
 
 void run_cases(){
-    string s;
-    cin >> s;
-    int left[26] = {0};
-    int right[26] = {0};
-    FO(i, 0, sz(s) / 2){
-        int index = s[i] - 'a';
-        left[index]++;
-    }
-    FO(i, (sz(s) + 1) / 2, sz(s)){
-        int index = s[i] - 'a';
-        right[index]++;
-    }
-    F(26){
-        if(left[i] != right[i]){
-            cout << "NO" << nl;
-            return;
+    int a, b;
+    cin >> a >> b;
+    int c = 0;
+    FO(i, 0, a + 1){
+        FO(j, 0, a + 1){
+            FO(k, 0, a + 1){
+                if(i + j + k <= a && a * b * c <= b) c++;
+                deb(i, j, k)
+            }
         }
     }
-    cout << "YES" << nl;
-
+    cout << c << nl;
 }
 
 int main() {
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
+#ifndef ABHIJAY_DEBUG
+    // freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
     freopen("debug.txt", "w", stderr);
 #endif
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     auto start1 = high_resolution_clock::now();
     int TT = 1, i = 1;
-    cin >> TT;
+    //cin >> TT;
+    cerr << "--------------------------------------\n";
     while(TT--){
         cerr << "case #" << i << ": " << nl;
         run_cases();
@@ -95,5 +91,6 @@ int main() {
     }
     auto stop1 = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop1 - start1);
-    cerr << "Time: " << duration . count() / 1000 << " ms";
+    int TIME = duration . count() / 1000;
+    cerr << "Time: " << (float)TIME / 1000 << " sec";
 }
