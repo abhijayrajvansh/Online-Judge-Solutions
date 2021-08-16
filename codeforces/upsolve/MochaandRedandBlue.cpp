@@ -73,8 +73,7 @@ void run_cases(){
             if(s[x] == '_'){
                 if(s[0] == '?' && n % 2 == 0){
                     s[0] = 'B';
-                    F(n - 1) cout << s[i] << nl;
-                    return;
+                    // F(n - 1) cout << s[i];
                 }
                 if(s[i - 1] == 'R'){
                     s[i] = 'B';
@@ -104,9 +103,9 @@ void run_cases(){
 
 int main() {
 #ifndef ABHIJAY_DEBUG
-    // freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
     freopen("debug.txt", "w", stderr);
 #endif
+    // freopen("input.txt", "r", stdin);
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     auto start1 = high_resolution_clock::now();
