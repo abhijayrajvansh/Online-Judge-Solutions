@@ -3,7 +3,6 @@
 *.txt
 *.class
 /contest/
-a.cpp
 a
 main.cpp
 main
