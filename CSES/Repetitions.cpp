@@ -1,6 +1,6 @@
 /**
  *    author:   abhijayrajvansh
- *    created:  28.12.2021 05:18:18
+ *    created:  28.12.2021 05:59:55
 **/
 #include <bits/stdc++.h>
 using namespace std;
@@ -10,26 +10,15 @@ int main (){
     cin.tie(NULL);
     string s;
     cin >> s;
-    map<char, int> freq;
-    for(int i = 0; i < s.size(); i++){
-        freq[s[i]]++;
-    }
-    /*-------------------------------------------------
-    map<char, int> :: iterator it;
-    for(it = freq.begin(); it != freq.end(); it++){
-        cout << it->first << " " << it->second << endl;
-    } 
-    bit long process to traverse...
-    also can be done using for each loop with "auto" keyword
-
-    for(auto it = freq.begin(); it != freq.end(); it++){
-        cout << it->first << " appeared " << it->second << " times" << '\n';
-    }
-    --------------------------------------------------*/
-    // printing the highest value:
-    int ans = 0;
-    for(auto it = freq.begin(); it != freq.end(); it++){
-        ans = max(ans, it->second);
+    s = '_'+s+'_';
+    int c = 0, ans = 0;
+    for(int i = 0; i < (int)s.size(); i++){
+        ans = max(ans, c);
+        if(s[i] == s[i-1]){
+            c++;
+        }else{
+            c = 1;
+        }
     }
     cout << ans;
     return 0;
