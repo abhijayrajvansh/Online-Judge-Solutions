@@ -1,6 +1,6 @@
 /**
  *    author:   abhijayrajvansh
- *    created:  07.01.2022 02:42:14
+ *    created:  07.01.2022 05:12:28
 **/
 #include <bits/stdc++.h>
 using namespace std;
@@ -8,6 +8,9 @@ using namespace std;
 int main (){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
+    string s;
+    cin >> s;
+    s[0] = toupper(s[0]);
+    cout << s;
     return 0;
 }
